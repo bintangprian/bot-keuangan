@@ -16,14 +16,20 @@ TOKEN = "8870452198:AAGkmJlaasZlE2UWxb7-TD8QnXOPLTjvBxU"
 # ==========================
 # GOOGLE SHEETS
 # ==========================
+import os
+import json
 
 SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive"
 ]
 
-creds = Credentials.from_service_account_file(
-    "bot-keuangan-498215-3a10fa44ff29.json",
+google_creds = json.loads(
+    os.environ["GOOGLE_CREDENTIALS"]
+)
+
+creds = Credentials.from_service_account_info(
+    google_creds,
     scopes=SCOPES
 )
 
